@@ -28,9 +28,9 @@ var gauss_1024 = []uint16{
 	61782, 63774, 64793, 65255, 65441, 65507, 65527, 65533,
 }
 
-// Sample f (or g) from the provided SHAKE256x4 PRNG. This function
+// Sample f (or g) from the provided SHAKE256-based PRNG. This function
 // ensures that the sampled polynomial has odd parity.
-func sample_f(logn uint, pc *shake256x4, f []int8) {
+func sample_f(logn uint, pc *shake256prng, f []int8) {
 	n := 1 << logn
 	var tab []uint16
 	zz := 1

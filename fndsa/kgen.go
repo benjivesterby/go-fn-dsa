@@ -54,7 +54,7 @@ func keygen_inner(logn uint, seed []byte,
 	tmp []uint32, tmp_fxr []fxr, tmp_u16 []uint16) {
 
 	n := 1 << logn
-	pc := newSHAKE256x4(seed)
+	pc := newSHAKE256prng(seed)
 	for {
 		// Sample f and g, both with odd parity.
 		sample_f(logn, pc, f)

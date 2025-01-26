@@ -75,17 +75,17 @@ var log2 = f64mk(6243314768165359, -53)
 // 1/log(2)
 var inv_log2 = f64mk(6497320848556798, -52)
 
-// Sampler state: a wrapper around a PRNG (SHAKE256x4), and also embedding
+// Sampler state: a wrapper around a PRNG (SHAKE256-based), and also embedding
 // the degree.
 type sampler struct {
-	pc   *shake256x4
+	pc   *shake256prng
 	logn uint
 }
 
 // Initialize the sampler for a given degree and seed.
 func newSampler(logn uint, seed []byte) *sampler {
 	s := new(sampler)
-	s.pc = newSHAKE256x4(seed)
+	s.pc = newSHAKE256prng(seed)
 	s.logn = logn
 	return s
 }
