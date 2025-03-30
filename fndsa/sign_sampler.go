@@ -172,6 +172,7 @@ func (s *sampler) ber_exp(x f64, ccs f64) bool {
 	// 2^(-64), hence that case is negligible in practice).
 	t := uint32(ti)
 	t |= (63 - t) >> 26
+	t &= 63
 
 	// Compute ccs*exp(-x) = (ccs*exp(-r))/2^t. We want the result scaled
 	// up by a factor 2^64. Since expm_p63() returns a value that could be
